@@ -1,0 +1,284 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Library Borrowing and Returning System
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;family=Great+Vibes&display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Roboto', sans-serif;
+        }
+   .logo-font {
+            font-family: 'Great Vibes', cursive;
+        }
+  </style>
+  <script>
+   function logout() {
+            // Simulate a logout by redirecting to the login page
+            window.location.href = 'login.html';
+        }
+
+        function showBorrowedBooks() {
+            // Simulate showing borrowed books for the user
+            const borrowedBooks = [
+                { title: 'Book Title 1', author: 'Author Name 1', image: 'https://storage.googleapis.com/a1aa/image/MLkw1NCfE6TbP6WVVmVQDrRfFHfZJWwVLpmRtYvH1UrG5LnnA.jpg' },
+                { title: 'Book Title 2', author: 'Author Name 2', image: 'https://storage.googleapis.com/a1aa/image/MLkw1NCfE6TbP6WVVmVQDrRfFHfZJWwVLpmRtYvH1UrG5LnnA.jpg' },
+                { title: 'Book Title 3', author: 'Author Name 3', image: 'https://storage.googleapis.com/a1aa/image/MLkw1NCfE6TbP6WVVmVQDrRfFHfZJWwVLpmRtYvH1UrG5LnnA.jpg' }
+            ];
+
+            const container = document.getElementById('borrowed-books-container');
+            container.innerHTML = '';
+
+            borrowedBooks.forEach(book => {
+                const bookItem = document.createElement('div');
+                bookItem.className = 'bg-white p-4 rounded-lg shadow-lg';
+                bookItem.innerHTML = `
+                    <img src="${book.image}" alt="Book cover image of ${book.title}" class="w-full h-64 object-cover mb-4 rounded" />
+                    <h2 class="text-xl font-bold mb-2">${book.title}</h2>
+                    <p class="text-gray-700 mb-4">Author: ${book.author}</p>
+                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Return</button>
+                `;
+                container.appendChild(bookItem);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', showBorrowedBooks);
+
+        function verifyData() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            if (username === '' || password === '' || confirmPassword === '') {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match.');
+                return;
+            }
+
+            alert('Verification successful. You can now log in.');
+            window.location.href = 'login.html';
+        }
+
+        function signIn() {
+            // Simulate a sign-in by redirecting to the main dashboard
+            window.location.href = 'dashboard.html';
+        }
+  </script>
+ </head>
+ <body class="bg-gray-100">
+  <!-- Registration Page -->
+  <div class="min-h-screen flex items-center justify-center bg-yellow-200" style="">
+   <div class="bg-blue-200 p-8 rounded-lg shadow-lg w-full max-w-md" style="">
+    <h2 class="text-2xl font-bold mb-6 text-center" style="">
+     Register
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+       Username
+      </label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" placeholder="Enter your username" type="text"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+       Password
+      </label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" placeholder="Enter your password" type="password"/>
+     </div>
+     <div class="mb-6">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="confirm-password">
+       Confirm Password
+      </label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="confirm-password" placeholder="Confirm your password" type="password"/>
+     </div>
+     <div class="flex items-center justify-between">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="verifyData()" type="button">
+       Register
+      </button>
+     </div>
+    </form>
+   </div>
+  </div>
+  <!-- Login Page -->
+  <div class="min-h-screen flex items-center justify-center bg-yellow-200" style="">
+   <div class="bg-blue-200 p-8 rounded-lg shadow-lg w-full max-w-md" style="">
+    <h2 class="text-2xl font-bold mb-6 text-center" style="">
+     Login
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+       Username
+      </label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" placeholder="Enter your username" type="text"/>
+     </div>
+     <div class="mb-6">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+       Password
+      </label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" placeholder="Enter your password" type="password"/>
+     </div>
+     <div class="flex items-center justify-between">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="signIn()" type="button" style="">
+       Sign In
+      </button>
+     </div>
+    </form>
+   </div>
+  </div>
+  <!-- Main Dashboard -->
+  <div class="min-h-screen flex flex-col bg-pink-200" style="">
+   <!-- Navigation -->
+   <nav class="bg-blue-600 p-4">
+    <div class="container mx-auto flex justify-between items-center">
+     <a class="text-white text-2xl font-bold logo-font" href="#" style="">
+      Violet Library
+     </a>
+     <div>
+      <a class="text-white px-4" href="#">
+       Home
+      </a>
+      <a class="text-white px-4" href="#">
+       Borrow Books
+      </a>
+      <a class="text-white px-4" href="#">
+       Return Books
+      </a>
+      <a class="text-white px-4" href="#">
+       Borrowing History
+      </a>
+      <a class="text-white px-4" href="#" onclick="logout()" style="">
+       Logout
+      </a>
+     </div>
+    </div>
+   </nav>
+   <!-- Content -->
+   <div class="container mx-auto p-4 flex-1">
+    <h1 class="text-3xl font-bold mb-4" style="">
+     Borrow Books
+    </h1>
+    <!-- Search Feature -->
+    <div class="mb-4">
+     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="search" placeholder="Search for books or genres" type="text"/>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+     <!-- Book Item -->
+     <div class="bg-white p-4 rounded-lg shadow-lg">
+      <img alt="Book cover image of a fictional book" class="w-full h-64 object-cover mb-4 rounded" height="400" src="https://storage.googleapis.com/a1aa/image/MLkw1NCfE6TbP6WVVmVQDrRfFHfZJWwVLpmRtYvH1UrG5LnnA.jpg" width="300"/>
+      <h2 class="text-xl font-bold mb-2">
+       Book Title 1
+      </h2>
+      <p class="text-gray-700 mb-4">
+       Author: Author Name 1
+      </p>
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+       Borrow
+      </button>
+     </div>
+     <div class="bg-white p-4 rounded-lg shadow-lg">
+      <img alt="Book cover image of a fictional book" class="w-full h-64 object-cover mb-4 rounded" height="400" src="https://storage.googleapis.com/a1aa/image/MLkw1NCfE6TbP6WVVmVQDrRfFHfZJWwVLpmRtYvH1UrG5LnnA.jpg" width="300"/>
+      <h2 class="text-xl font-bold mb-2">
+       Book Title 2
+      </h2>
+      <p class="text-gray-700 mb-4">
+       Author: Author Name 2
+      </p>
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+       Borrow
+      </button>
+     </div>
+     <div class="bg-white p-4 rounded-lg shadow-lg">
+      <img alt="Book cover image of a fictional book" class="w-full h-64 object-cover mb-4 rounded" height="400" src="https://storage.googleapis.com/a1aa/image/MLkw1NCfE6TbP6WVVmVQDrRfFHfZJWwVLpmRtYvH1UrG5LnnA.jpg" width="300"/>
+      <h2 class="text-xl font-bold mb-2">
+       Book Title 3
+      </h2>
+      <p class="text-gray-700 mb-4">
+       Author: Author Name 3
+      </p>
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+       Borrow
+      </button>
+     </div>
+     <div class="bg-white p-4 rounded-lg shadow-lg">
+      <img alt="Book cover image of a fictional book" class="w-full h-64 object-cover mb-4 rounded" height="400" src="https://storage.googleapis.com/a1aa/image/MLkw1NCfE6TbP6WVVmVQDrRfFHfZJWwVLpmRtYvH1UrG5LnnA.jpg" width="300"/>
+      <h2 class="text-xl font-bold mb-2">
+       Book Title 4
+      </h2>
+      <p class="text-gray-700 mb-4">
+       Author: Author Name 4
+      </p>
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+       Borrow
+      </button>
+     </div>
+     <div class="bg-white p-4 rounded-lg shadow-lg">
+      <img alt="Book cover image of a fictional book" class="w-full h-64 object-cover mb-4 rounded" height="400" src="https://storage.googleapis.com/a1aa/image/MLkw1NCfE6TbP6WVVmVQDrRfFHfZJWwVLpmRtYvH1UrG5LnnA.jpg" width="300"/>
+      <h2 class="text-xl font-bold mb-2">
+       Book Title 5
+      </h2>
+      <p class="text-gray-700 mb-4">
+       Author: Author Name 5
+      </p>
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+       Borrow
+      </button>
+     </div>
+     <div class="bg-white p-4 rounded-lg shadow-lg">
+      <img alt="Book cover image of a fictional book" class="w-full h-64 object-cover mb-4 rounded" height="400" src="https://storage.googleapis.com/a1aa/image/MLkw1NCfE6TbP6WVVmVQDrRfFHfZJWwVLpmRtYvH1UrG5LnnA.jpg" width="300"/>
+      <h2 class="text-xl font-bold mb-2">
+       Book Title 6
+      </h2>
+      <p class="text-gray-700 mb-4">
+       Author: Author Name 6
+      </p>
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+       Borrow
+      </button>
+     </div>
+    </div>
+    <h1 class="text-3xl font-bold mt-8 mb-4" style="">
+     Return Books
+    </h1>
+    <div id="borrowed-books-container" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+     <!-- Borrowed books will be dynamically inserted here -->
+    </div>
+    <h1 class="text-3xl font-bold mt-8 mb-4">
+     Borrowing History
+    </h1>
+    <div class="bg-yellow-200 p-4 rounded-lg shadow-lg" style="">
+     <table class="min-w-full bg-white">
+      <thead>
+       <tr>
+        <th class="py-2 px-4 border-b border-gray-200 bg-gray-100 text-left text-sm font-bold text-gray-600 uppercase tracking-wider">
+         Book Title
+        </th>
+        <th class="py-2 px-4 border-b border-gray-200 bg-gray-100 text-left text-sm font-bold text-gray-600 uppercase tracking-wider" style="">
+         Borrower
+        </th>
+        <th class="py-2 px-4 border-b border-gray-200 bg-gray-100 text-left text-sm font-bold text-gray-600 uppercase tracking-wider">
+         Borrow Date
+        </th>
+        <th class="py-2 px-4 border-b border-gray-200 bg-gray-100 text-left text-sm font-bold text-gray-600 uppercase tracking-wider">
+         Return Date
+        </th>
+       </tr>
+      </thead>
+      <tbody>
+       <!-- Empty table body -->
+      </tbody>
+     </table>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>
